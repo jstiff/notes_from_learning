@@ -16,8 +16,11 @@
 
 - 'Finite Automata' is a model of a computation with a finite amount of memory or
   states. Which can be exeuted on any number of devices.
+
   ```
   ex) Electric switch.
         State is either 'on' or 'off'
-  	![](/images/switch.png)
+
   ```
+
+![](images/switch.png)
