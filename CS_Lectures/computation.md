@@ -12,5 +12,12 @@
     can be a means to solving a problem.(device)
   - The step by step instructions of this process to solving a problem is known as an "Algorithm".
 
+<center><h2>Finite Automata</h2></center>
+
 - 'Finite Automata' is a model of a computation with a finite amount of memory or
   states. Which can be exeuted on any number of devices.
+  ```
+  ex) Electric switch.
+        State is either 'on' or 'off'
+  	![](/images/switch.png)
+  ```
