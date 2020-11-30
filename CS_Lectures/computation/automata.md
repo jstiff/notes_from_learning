@@ -43,7 +43,7 @@ ex) Electric switch.
 
 ```
 
-![](images/switch.png)
+![](../images/switch.png)
 
 ```
     ex2) Fan regulator.
@@ -53,7 +53,7 @@ ex) Electric switch.
     		00 <-> 10 <-> 11 <-> 01
 ```
 
-![](images/four-way.png)
+![](../images/four-way.png)
 
 ```
 ex3) Machine that accepts only strings divisable by 4 It just so happens that if any Binary value ends in 2 consecutive 0's...that binary value is divisable by 4. So we need a Machine to accept only strings that end in two 0's as it's final state.
