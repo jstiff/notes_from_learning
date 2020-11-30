@@ -14,10 +14,12 @@
 
 <center><h2>Finite Automata</h2></center>
 
-- In informal terms finite automaton (or finite state machine) is an abstract machine that has states and transitions between these states. It is always in one of its states and while it reads an input it switches from state to state. It has a start state and can have one or more end (accepting) states.
+- In informal terms finite automaton (or finite state machine) is an abstract machine that has states and transitions between these states. It is always in one of its states and while it reads an input it switches from state to state. It has a start state and can have one or more end (accepting) states. Can be used to accept string values or map values to diff values. It's a mapping network of finite available states which 'language syntax value representations/entities' can traverse the 'machine' (computation entity) and ultimatly produce an intended outcome. In some cases that is 'acceptence' by the machine or value transistion/shift/translation.
 
   'Finite Automata' is a model of a computation with a finite amount of memory or
   states. Which can be exeuted on any number of devices. Finite automata are used to recognize patterns of strings, regular expressions are used to generate patterns of strings. Each can be converted between the other. Regex to FS and FS to Regex. **Deterministic Machines** (DFSM) mean there is an un-ambiguous mapping of a string element being processed to a definite state change. A string element being processed will never have more than one option in the next state change.
+
+  We can say that a language that is accepted by a FSM is the set of alphanumeric values that the FSM will accept. Meaning that the FSM defines what language is by its 'computational acceptence' of it which is then regaurded as being Regular or FSM approved!!! I'm assuming then that a FSM can catch syntax errors in IDE's.
 
   ```
   DFSM = M
@@ -50,6 +52,8 @@ ex) Electric switch.
     	as 1 of any 4 possible 2 digit binary values.
     		00 <-> 10 <-> 11 <-> 01
 ```
+
+![](images/four-way.png)
 
 ```
 ex3) Machine that accepts only strings divisable by 4 It just so happens that if any Binary value ends in 2 consecutive 0's...that binary value is divisable by 4. So we need a Machine to accept only strings that end in two 0's as it's final state.
