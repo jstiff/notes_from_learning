@@ -17,7 +17,17 @@
 - In informal terms finite automaton (or finite state machine) is an abstract machine that has states and transitions between these states. It is always in one of its states and while it reads an input it switches from state to state. It has a start state and can have one or more end (accepting) states.
 
   'Finite Automata' is a model of a computation with a finite amount of memory or
-  states. Which can be exeuted on any number of devices. Finite automata are used to recognize patterns of strings, regular expressions are used to generate patterns of strings. Each can be converted between the other. Regex to FS and FS to Regex. **Deterministic Machines** mean there is an un-ambiguous mapping of a string element being processed to a definite state change. A string elemement being processed will never have more than one option in the next state change.
+  states. Which can be exeuted on any number of devices. Finite automata are used to recognize patterns of strings, regular expressions are used to generate patterns of strings. Each can be converted between the other. Regex to FS and FS to Regex. **Deterministic Machines** (DFSM) mean there is an un-ambiguous mapping of a string element being processed to a definite state change. A string elemement being processed will never have more than one option in the next state change.
+
+  ```
+  DFSM = M
+  Q = Set of States of M
+  Sigma = alphabet used for the strings
+  Delta = transition function
+
+  Q x Sigma -> Q ..... state takes a string and moves into another state.
+
+  ```
 
   They describe the same languages. Not 'human' languages, but 'Formal'languages (set of strings accepted by some rule) They describe a particular form of language called **"Regular language"**. A language is regular if there is a Deterministic Finite Automota for it....
 
@@ -33,16 +43,24 @@ ex) Electric switch.
 
 ![](images/switch.png)
 
-    ```
-    ex2) Fan regulator. (Not sure this is correct/needs more research)
+```
+    ex2) Fan regulator.
     	Has 4 states which can be incrementally approached as low->med->High-off states. With
     	push operations in 'clockwise' and 'ani-clockwise' directions. Each state can be represented
     	as 1 of any 4 possible 2 digit binary values.
     		00 <-> 10 <-> 11 <-> 01
-    	Processing a stream of Binary values. State represented as two bits...by shifting over to next
-    	bit in the stream will represent a change in state.
-    		|10|110 ==> 1|01|10 ==> 10|11|0 ==> 101|10|.....
+```
+
+```
+ex3) Machine that accepts only strings divisable by 4 It just so happens that if any Binary value ends in 2 consecutive 0's...that binary value is divisable by 4. So we need a Machine to accept only strings that end in two 0's as it's final state.
+
+Processing a stream of Binary values. State represented as two bits...by shifting over to next
+    	bit in the stream will represent a change in state. Feed string 10100 into the machine.
+    		|10|100 ==> 1|01|00 ==> 10|10|0 ==> 101|00|
     		    |           |           |          |
     		    |           |           |          |
-    		   off         low         med        high
-    ```
+    		   rej         rej         rej        accept
+
+			   If state ends in anything other than 00 it is rejected. This string is accepted.
+
+```
