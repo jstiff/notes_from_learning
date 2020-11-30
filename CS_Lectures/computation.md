@@ -23,6 +23,8 @@
 
   - Variables, Numbers, URL's, email, phone number can be described by Reg Lang.
 
+  People prefer RegExspressions, but computers prefer Finite Autotomota. So there are programs that convert between the two.
+
 ```
 ex) Electric switch.
       State is either 'on' or 'off'
@@ -32,7 +34,7 @@ ex) Electric switch.
 ![](images/switch.png)
 
     ```
-    ex2) Fan regulator.
+    ex2) Fan regulator. (Not sure this is correct/needs more research)
     	Has 4 states which can be incrementally approached as low->med->High-off states. With
     	push operations in 'clockwise' and 'ani-clockwise' directions. Each state can be represented
     	as 1 of any 4 possible 2 digit binary values.
@@ -41,6 +43,6 @@ ex) Electric switch.
     	bit in the stream will represent a change in state.
     		|10|110 ==> 1|01|10 ==> 10|11|0 ==> 101|10|.....
     		    |           |           |          |
-    			|           |           |          |
+    		    |           |           |          |
     		   off         low         med        high
     ```
