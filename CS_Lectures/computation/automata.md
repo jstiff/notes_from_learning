@@ -17,7 +17,7 @@
 - In informal terms finite automaton (or finite state machine) is an abstract machine that has states and transitions between these states. It is always in one of its states and while it reads an input it switches from state to state. It has a start state and can have one or more end (accepting) states.
 
   'Finite Automata' is a model of a computation with a finite amount of memory or
-  states. Which can be exeuted on any number of devices. Finite automata are used to recognize patterns of strings, regular expressions are used to generate patterns of strings. Each can be converted between the other. Regex to FS and FS to Regex. **Deterministic Machines** (DFSM) mean there is an un-ambiguous mapping of a string element being processed to a definite state change. A string elemement being processed will never have more than one option in the next state change.
+  states. Which can be exeuted on any number of devices. Finite automata are used to recognize patterns of strings, regular expressions are used to generate patterns of strings. Each can be converted between the other. Regex to FS and FS to Regex. **Deterministic Machines** (DFSM) mean there is an un-ambiguous mapping of a string element being processed to a definite state change. A string element being processed will never have more than one option in the next state change.
 
   ```
   DFSM = M
@@ -33,7 +33,7 @@
 
   - Variables, Numbers, URL's, email, phone number can be described by Reg Lang.
 
-  People prefer RegExspressions, but computers prefer Finite Autotomota. So there are programs that convert between the two.
+  People prefer RegExpressions, but computers prefer Finite Autotomota. So there are programs that convert between the two.
 
 ```
 ex) Electric switch.
