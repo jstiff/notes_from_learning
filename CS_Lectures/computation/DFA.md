@@ -17,9 +17,14 @@
 - In informal terms finite automaton (or finite state machine) is an abstract machine that has states and transitions between these states. It is always in one of its states and while it reads an input it switches from state to state. It has a start state and can have one or more end (accepting) states. Can be used to accept string values or map values to diff values. It's a mapping network of finite available states which 'language syntax value representations/entities' can traverse the 'machine' (computation entity) and ultimatly produce an intended outcome. In some cases that is 'acceptence' by the machine or value transistion/shift/translation.
 
   'Finite Automata' is a model of a computation with a finite amount of memory or
-  states. Which can be exeuted on any number of devices. Finite automata are used to recognize patterns of strings, regular expressions are used to generate patterns of strings. Each can be converted between the other. Regex to FS and FS to Regex. **Deterministic Machines** (DFSM) mean there is an un-ambiguous mapping of a string element being processed to a definite state change. A string element being processed will never have more than one option in the next state change.
+  states. FSA can be exeuted on any number of devices. Finite automata are used to recognize patterns of strings, regular expressions are string patterns used to generate FSA. Each can be converted between the other. Regex to FS and FS to Regex.
+
+  **Deterministic Machines** (DFSM) mean there is an un-ambiguous mapping of a string element being processed to a definite state change. A string element being processed will never have more than one option in the next state change.
+  In a 'Deterministic Finite State Machine', the available 'states' are fixed. (allocated memory in the machine is fixed..perhapes it can live on the 'stack'...i'm not sure).
 
   We can say that a language that is accepted by a FSM is the set of alphanumeric values that the FSM will accept. Meaning that the FSM defines what language is by its 'computational acceptence' of it which is then regaurded as being Regular or FSM approved!!! I'm assuming then that a FSM can catch syntax errors in IDE's.
+
+  Regular expressions are patterns of text for which a FSM will accept. Specified pattern of the elements from a regular language from which a FSM will process and accept. Some Regex engines are implemented as Finite State Automota...grep, awk, and sed. These build a state machine based on the Regex pattern and use it to process the input strings.
 
   ```
   DFSM = M
@@ -32,6 +37,10 @@
   ```
 
   They describe the same languages. Not 'human' languages, but 'Formal'languages (set of strings accepted by some rule) They describe a particular form of language called **"Regular language"**. A language is regular if there is a Deterministic Finite Automota for it....
+
+  If a language set A is regualr and defined by Machine_1 and a set B is regular and defined by Machine_2...the **'Union'** of A and B will also be a regular language. In this instance the DFSM of each language set run in parallel while processing a given input and for the union to also be regular at least one of the Machines must end in an accepting state. Like the 'or' clause in logic
+
+  For an **'Intersection'** of the two sets....(like the 'and' clause in logic)...both machines running in parallel must end in an accept state.
 
   - Variables, Numbers, URL's, email, phone number can be described by Reg Lang.
 
@@ -60,7 +69,7 @@ ex3) Machine that accepts only strings divisable by 4 It just so happens that if
 
 Processing a stream of Binary values. State represented as two bits...by shifting over to next
     	bit in the stream will represent a change in state. Feed string 10100 into the machine.
-    		|10|100 ==> 1|01|00 ==> 10|10|0 ==> 101|00|
+    		|10|100 ==> 1|01|00 ==> 10|10|0 ==> 101|00| <-- end of string
     		    |           |           |          |
     		    |           |           |          |
     		   rej         rej         rej        accept
