@@ -42,6 +42,8 @@
 
   For an **'Intersection'** of the two sets....(like the 'and' clause in logic)...both machines running in parallel must end in an accept state.
 
+  DFA's can handle Union and Intersection of 2 seperate Regular languages by processesing a single string is parrallel. A single string can be accepted by the Automata either by 'or' or 'and' acceptence state results. What we cannot do in DFA's is to 'concatenate' 2 diff strings from diff Regualr languages. For that we need a **NFA**.
+
   - Variables, Numbers, URL's, email, phone number can be described by Reg Lang.
 
   People prefer RegExpressions, but computers prefer Finite Autotomota. So there are programs that convert between the two.
