@@ -22,5 +22,9 @@ going into the future.
 
   The Browswer takes an HTML file and parses it into a tree of nodes.
 
+  React’s diffing algorithm allows developers to author user interfaces in a declarative way, without 
+  worrying about how to handle updates when the backing data changes. 
+  rendering a component and updating the DOM for that component are two separate steps in the lifecycle.
+
   When the 'setState' function is called in a component...that component and all of it's children are marked as 'dirty'.
   React then executes the render() function for each of the 'dirty' components.
