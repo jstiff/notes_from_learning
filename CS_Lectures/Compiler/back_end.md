@@ -36,7 +36,7 @@ maps them to real ones.
 **Instruction Selection** tries to utilize the 'instruction set' of a given machine in the most efficient way possible. For example, the 'a \* b' example above, if an instruction set has a built in multiplying instruction the right 'instruction selection' would be to use the built in mult to avoid the load a ....then load b...then mult...etc. Whereas another achitecture may not have a way of dealing with multiplication.
 
 **Instruction Scheduling** is a method of 'hideing latency' between loading operations...say if 'mult R1 R2' takes
-a long time you could load another value into a diff register while you're waiting for the loads to finnish.
+a long time you could load another value into a diff register while you're waiting for the loads to finnish. This optimization will put strain on the registers. Optimization is in essence taking full advantage of registers. But, in reality we only have so many registers.
 
 **Register Allocation** will take all of the 'virtual registers' generated in previoius IR and map them to real registers on the machine. Let's say that there are only 3 registers. P1, P2, P3. But we have 10 virtual registers in the IR.
 
@@ -55,3 +55,9 @@ It reused P1 register because in reality it was not being used. If and only if t
 'Live Range' of a register is the length of time it will be needed in the lifetime of the exectution. The longer the 'live ranges' these registers have the more 'Register Pressure' exists in the program. Their is essentially a stronger 'competition' for registers throughout the process.
 
 So as part of the Register allocation ..the point is to analyse the intermediate representation of all the virtual registers and determine their 'live ranges' so as to allocate registers in the most efficient way possible. If there are not enough registers then some variables might be allocated out to memory somewhere...slowing things down.
+
+'Spilling'...is when there are not enough registers and outside memory is needed. It is the job of the Register Allocator to minimize 'spilling'.
+
+Most likely anything that is 'spilled' goes to the stack memory or the L1 cache. This is still slower than registers. Accessing L1 chache will take 2-3 cycles. Main memory is 100's of cycles.
+
+Unfortunately, optimizations that are made to the code require more registers. So in the optimization phase it is important to understand your register limitations and how to accomidate the particular Register Allocator for that architecture.
