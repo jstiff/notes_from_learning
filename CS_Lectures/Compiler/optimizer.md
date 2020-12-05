@@ -1,8 +1,12 @@
 ### Optimizer phase of a compilier.
 
 - Ideally, this step should be machine independent. (Machine dependent code done in 'backend' phase).
+  It is only concerened with the code. Tries to optimize the code in an hardware/machine 'independent' way.
+  This is harder said than done.
 
-An example of an optimization is 'Common Subexpression Elimination' (CSE).
+An example of an optimization is 'Common Subexpression Elimination' (CSE). Finding repetative computations in the code...'reusing' coputational values where possible. To 'reuse' a value means it must be stored somewhere. There needs to be enough memory and it must be fast enough to make it worth while.
+
+This implies that if the machine hardware is not capable of storing a CSE effectivly then it might make more sense to simple re-compute on that machine.
 
 ```
      x = a + b + c;
