@@ -38,6 +38,32 @@ maps them to real ones.
 **Instruction Scheduling** is a method of 'hideing latency' between loading operations...say if 'mult R1 R2' takes
 a long time you could load another value into a diff register while you're waiting for the loads to finnish. This optimization will put strain on the registers. Optimization is in essence taking full advantage of registers. But, in reality we only have so many registers.
 
+```
+                                    AST                              IR                       cycles (pipelining)
+                                 -----------------------           -------------         ----------------------
+  x = a * b + c/d                           assign                  load a -> R1            1 , 3
+                                           /      \                 load b -> R2            2 , 4
+                                          x        +                mult R1 R2 -> R3        5 , 6
+                                                /     \             load c -> R4            6, 8
+                                               *       /            load d -> R5            7, 9
+                                              / \     / \           div R4, R5 -> R6        10, 14
+                                             a   b   c   d          add R3, R6 ->R7         15, 15
+                                                                    store R7 -> x;          16, 17
+
+The variables a, b ,c etc are just offsets to the 'activation record' pointer.
+
+Latencies
+---------
+Load: 3 cycles
+mult: 2 cycles
+div: 5 cycles
+store: 2 cycles
+add: 1 cycle
+----------
+
+This is executed in 17 clock cycles. Pipelining occurs whenever there are registers that do not depend on each other...instructions are able to 'overlap' each other.
+```
+
 **Register Allocation** will take all of the 'virtual registers' generated in previoius IR and map them to real registers on the machine. Let's say that there are only 3 registers. P1, P2, P3. But we have 10 virtual registers in the IR.
 
 ```

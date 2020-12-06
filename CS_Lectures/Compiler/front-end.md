@@ -1,5 +1,9 @@
 ## Front end compilier.
 
+- list of tools to help make compilers.
+
+  <img src="../images/tools-list.png" alt="drawing" style="width:350px;"/>
+
 #### The first phase of a compilier has 3 general steps....
 
 1. Scanner (lexer) -> is implemented with regualar expressions and Finite Automata.
