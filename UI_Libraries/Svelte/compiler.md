@@ -1,5 +1,11 @@
 ## Svelte compilier process
 
+Svelte is a **compilier**...NOT a library or Framework.
+
+'Svelte 3.0 moves reactivity out of the component API and into the language.' Harris
+
+Svelte removes the overhead of building and diffing vdom trees. It retains references to the DOM node in variables and can update their content directly after the change.
+
 Notes taken from ["The Svelte Compilier Handbook"]('https://lihautan.com/the-svelte-compiler-handbook/#overview')
 
 ### Svelte syntax is a "superset" of HTML

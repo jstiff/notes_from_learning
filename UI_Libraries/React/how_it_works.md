@@ -7,7 +7,8 @@ going into the future.
 - React fallows the 'Observable' software design pattern(1 of the 23 GangOfFour design patterns).This design is
   typically implemented for 'Event driven distributed systems'. Such as blockchain and dist databases... but also is used
   for user input data such as keyboard events. Many pattens implement background threads to listen for events using the
-  system mechanisms provided by the Kernal.
+  system mechanisms provided by the Kernel.
+- The 'Subject'(publisher) keeps track of all objects that are 'Observers'(subscribers). When a value changes in the 'Subject' object it can notify all of the 'Observers' that are subscribed to it.
 
 - React abstracts away event handling, attribute manipulation, manual DOM updates for the developer. We only need
   to concern ourselves with state change upsdates to any components.
@@ -22,8 +23,8 @@ going into the future.
 
   The Browswer takes an HTML file and parses it into a tree of nodes.
 
-  React’s diffing algorithm allows developers to author user interfaces in a declarative way, without 
-  worrying about how to handle updates when the backing data changes. 
+  React’s diffing algorithm allows developers to author user interfaces in a declarative way, without
+  worrying about how to handle updates when the backing data changes.
   rendering a component and updating the DOM for that component are two separate steps in the lifecycle.
 
   When the 'setState' function is called in a component...that component and all of it's children are marked as 'dirty'.
