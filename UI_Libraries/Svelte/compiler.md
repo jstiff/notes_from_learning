@@ -29,4 +29,6 @@ The Svelte parser handles specially for \<script> and \<style> tags.
 
 When the parser encounters a \<script> tag, it uses [acorn]('https://www.npmjs.com/package/acorn') to parse the content within the tag. When the parser sees a \<style> tag, it uses [css-tree]('https://www.npmjs.com/package/css-tree') to parse the CSS content.
 
-Compilier parses and translates everything in the neccessary Javascript DOM logic. Each component has its DOM methods. I believe the compiled code is constructed in such a way that the compiled DOM methods will be able to accept and process future user input.
+Compilier parses and translates everything neccessary for the Javascript DOM logic. Each component has its DOM methods.
+
+- I believe the compiled code is constructed in such a way that the compiled DOM methods will be able to process future user input. (???)
