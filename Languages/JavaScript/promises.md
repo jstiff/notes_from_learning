@@ -54,12 +54,16 @@
 
 [Link to Tony Alicea Promises video](https://www.youtube.com/watch?v=fyGSyqEX2dw)
 
-- Creating a new Promise will immedietly create the Promise object and fire off the executor() function which in turn passes in the resolve and reject functions that were just declared within that scope.
+- Creating a new Promise will immedietly create the Promise object and fire off the executor() function which in turn passes in the resolve and reject functions that were just declared within that scope (Defined by spec).
 - By calling the executer immedietley ...the executor function 'we' declared will be stuffed with the 'resolve/reject' functions that come with a 'Promise' impl...we also determine the 'result' value that will be passed into that resolve function. It can be the return value of an API call for example.
 
 Once the result comes in (if not Error)...then resolve function updates the state to 'FULLFILLED' and sets the returned result to the Promise states 'value'. And with that value it will pass it on to the 'then' handler functions declared within the Promise. If there are multpiple handlers in the array they will be executed sequentially. I believe each handler also returns a Promise with the new 'value' (???? could be wrong...)
 
 This means that the executor function will have closure over the state of the Promise.(??). I guess because a function was declared within another function the js Engine will have to allocate memory on the heap for the relevent state that was declared in the Promomise function. The garbadge collector will have to keep track of what has a pointer to the heap and destroy it when necessary. GC must have a ref counter to Promise.
+
+- Chaining '.then' to a Promise may look like they are chained to the original Promise, but that is not the case. If a second .then is declared it is attached to the Promise that its predecessor returned. (??) The Js Promise implementation wraps all results into a new Promise to aid in this chaining feature.
+
+- **IF** you created a new Promise inside a .then handler(which automatically returns a Promise) it will be syncronized with the original .then and still work. (?????) Look more into why!
 
 There are diff flavors of implementing Promises of diff 'recipes'.
 
