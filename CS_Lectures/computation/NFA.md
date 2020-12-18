@@ -4,6 +4,10 @@ The '\*' in a regular expression is syntax for a FSA to 'loop' in a particular s
 
 In NFA we will have 'choices' or branching of the computation. Branching will be executed in parallel and every possible state is traversed in this computational model.
 
+An NFA differs from a DFA in that each state can transition to zero or more other states on each input symbol, and a state can also transition to others without reading a symbol.
+
+The NFA accepts a given input stream if there is any way to reach a final state while reading the entire input. That is, it exhibits angelic nondeterminism.
+
 Essentially each choice is a 'spawning' of a new machine. And the NFA accepts a string input if **any** one state is accepted. Multiple spawed threads????
 
 DFA are already considered equivalent to an NFA....but not all NFA are equivalent to DFA (????). To convert an NFA to a DFA through a **'Subset construction'**.
@@ -13,6 +17,8 @@ NFA's process more than one potential state at a time. There is 'branching' logi
 DFA can be easily written as a switch statment.
 
 Regular Expressions can easily be converted into NFA... By implementing the 'Thompson Construction'.
+We can convert an arbitrary NFA into a DFA (though the DFA may in general be exponentially larger than the NFA).
+The intuition is that we make a DFA that simulates all possible executions of the NFA.
 
 In Scanners we write regular expressions to represent the valid tokens in a language....then we write an NFA using the Thompson construction and then take that NFA and convert it into a DFA with the Subset construction. We want to end up with a DFA becuase it is easier to code.
 
