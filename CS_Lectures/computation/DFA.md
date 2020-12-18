@@ -1,5 +1,12 @@
 # Computation
 
+**A Language** is ...just a set of strings.
+
+Alphabet: finite set of symbols<br/>
+String: sequence of symbols from that alphabet
+
+- Grammers, FSA , Regex ...are some of the tools for recognizing a language.
+
 -These are notes based on a youtube channel video series.
 'Theory of Computation #01 Intro to TOC & Finite Automata | Examples' <br/>
 <https://www.youtube.com/watch?v=Jbfto52zr0Q&list=PLEJxKK7AcSEEYrMd4G7Y3mjGlE651B7yc>
