@@ -39,3 +39,69 @@ RegEx for language 'Identifiers'.
         '_abn90' or 'bar_foo'.... would be accepted.
 
 ```
+
+In RegEx's you can have a combination of the alphabet based on three operations...
+
+1. Concatenation
+2. Union
+3. \*
+
+### Thompson Construction
+
+We can assume that every NFA can have only one accept state...by haveing all of its possible accept state map to a final accept state.
+
+- What if we have an NFA for a Language 1 (L1) and a seperate NFA for a L2 and we want an NFA that is the Union of these two languages? ----> L1 U L2
+
+We can branch!
+
+```
+        *******************
+        |     L1 U L2     |
+        *******************
+
+
+        / NFA 1 ----> ACCEPT STATE    \
+       /                               \
+---->                                     ACCEPT STATE
+       \                               /
+        \ NFA2  -----> ACCEPT STATE   /
+
+
+
+        either each NFA has an accpet state or you can map both to a final Accept state
+
+
+      **************************
+      Concatenation L1 & L2
+      **************************
+
+      ----> NFA1 -----> NFA2 ------> ACCEPT STATE
+
+
+      **************************
+        NFA for *
+      **************************
+
+      ???research
+
+
+
+
+
+
+
+```
+
+We construct an NFA for each element in the Regex string. Break it up into many NFA's ...then combine them together.
+
+### Subset construction
+
+idea of converting NFA to DFA is to think of a combination of potential states as **one** state. For example, if an NFA has 3 possible choices for letter 'a'...we think of these 3 possibilities as one DFA state. Remember that DFA's are the easiest to program so this is why we want to convert the NFA to DFA.
+
+If there are 3 NFA states you can have 8 DFA states.
+
+- DFA = 2^n .... where n === Number of NFA states.
+
+- The DFA's are actually the 'Powerset' (all subsets of a set) of the set of NFA states. All possible combinations of sets...'subsets'. The DFA 'power set' is the combination of all subsets including null set, of a given set.
+
+This is why is it called **Subset Construction**.
