@@ -187,4 +187,73 @@ There needs to be an 'error' state that represents the end of a match.
 
 - How do we determine what is an accept state? ...Prob an object that has a field 'AcceptState = true;' or something like this.
 
-Tables can have lots of redundency that can be cleaned up...for example all letters [a-Z] will most likely have the same acceptence state. We can have two tables....one that establishes 'Categories' like 'numbers' which will simplfy it for the final table.
+Tables can have lots of redundency that can be cleaned up...for example all letters [a-Z] will most likely have the same acceptence states and transitions. In order to simplify it... We can have two tables....one that establishes 'Categories' like 'numbers' which will represent symbols that all share the same DFA states.
+The name of the game is to always reduce redundancy for effiency and logical processing. These are column redundancies....
+
+there is also Row (states) redundancy that can be taken care of durring the scanner generator phase with **'DFA minimization'**. This is about mergin multiple states that have the same transitions into one state. If there is logical equivalence then we can simplify.
+
+- The Price to pay for eleminating the redundancy of the table is now there are two Tables ....two lookup tables stored in memory. Must consider this.
+
+But if the original Table is too big for the cache it will also cause a slowdown in the program. A trade off analysis needs to be done in order to decide on what is more appropriate. Every situation has it's own set of trade offs.
+
+- How do we make all this work....?....then how do we make it the most efficient as possible...???
+
+### Table Driven Scanner
+
+```
+Pseudo code
+
+CatTable = [];
+TransitionTable = [[]];    // two demensional array
+State = S0;
+Se = error state;
+lexeme = empty            ///lexeme is the string being processed. the final 'accepted' string like an identifier
+stack.push(NULL);         /// null for start of stack or beginning of lexeme
+stack.clear();
+
+
+while(state != Se){
+    char = getNextChar();
+    lexeme = lexeme + char;
+
+    if(state 'belongs' to acceptState){
+        stack.clear();
+    }
+
+    stack.push(state);
+    cat = CatTable[char];
+    state = TransitionTable[state][cat]
+}
+
+while(state belongs to AceeptState and !NULL){
+    state = stack.pop();
+    truncate lexeme;           //remove last character..lexeme is temp stored in a buffer
+    ROLLBACK;
+
+    if(state is member of AcceptState){
+        return type[state]
+
+    }else return error;
+}
+```
+
+### Direct Coded
+
+```
+    No lookup tables...just direct each character to the appropriate state...
+    This will look very ugly if you need to code it by hand, but a generator can do this for you.
+    this version will avoid memory accesses.
+
+```
+
+There are many types of 'Scanner generators'....
+
+- Flex (C, C++ DFA Table Driven)
+- golex (go)
+- Lex
+- Ragel
+- JFlex (java)
+- re2c (C)
+- Astir (C++ Table driven with braches)
+- rustlex_codegen
+- Etc.....
