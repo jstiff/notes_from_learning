@@ -103,5 +103,14 @@ If there are 3 NFA states you can have 8 DFA states.
 - DFA = 2^n .... where n === Number of NFA states.
 
 - The DFA's are actually the 'Powerset' (all subsets of a set) of the set of NFA states. All possible combinations of sets...'subsets'. The DFA 'power set' is the combination of all subsets including null set, of a given set.
+- Each of these subsets derived from an NFA set is known as the 'Epsilon Closure' (???)
 
 This is why is it called **Subset Construction**.
+
+To traverse a graph in with the goal of building Epsilon Closure....we can use graph algoithms such as 'depth first' or 'breath first'. Traversing only the Epsilons and ignoring everythin else....(???)
+
+- there seems to be 'redundency' when converting NFA to DFA that can be eliminated. (keep in mind!!!) when mapping the NFA states into DFA states.
+
+- If there is an NFA with 10 states...this will mean that there could be up to 2^10 DFA states...(1024 states). Obviousbly this is unmanagable to draw out all possible combination and then eliminate the redundancy. So there is a way to start out with only the 'reachable' states....or process to 'discover' the reachable DFA states.
+
+If you work out the epsilon closures you will only need 5 states.

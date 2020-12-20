@@ -21,6 +21,8 @@ String: sequence of symbols from that alphabet
 
 <center><h2>Deterministic Finite Automata</h2></center>
 
+- An automaton (Automata in plural) is an abstract self-propelled computing device which follows a predetermined sequence of operations automatically
+
 - In informal terms finite automaton (or finite state machine) is an abstract machine that has states and transitions between these states. It is always in one of its states and while it reads an input it switches from state to state. It has a start state and can have one or more end (accepting) states. Can be used to accept string values or map values to diff values. It's a mapping network of finite available states which 'language syntax value representations/entities' can traverse the 'machine' (computation entity) and ultimatly produce an intended outcome. In some cases that is 'acceptence' by the machine or value transistion/shift/translation.
 
   'Finite Automata' is a model of a computation with a finite amount of memory or
