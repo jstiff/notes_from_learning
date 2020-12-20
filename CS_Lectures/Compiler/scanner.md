@@ -114,3 +114,77 @@ To traverse a graph in with the goal of building Epsilon Closure....we can use g
 - If there is an NFA with 10 states...this will mean that there could be up to 2^10 DFA states...(1024 states). Obviousbly this is unmanagable to draw out all possible combination and then eliminate the redundancy. So there is a way to start out with only the 'reachable' states....or process to 'discover' the reachable DFA states.
 
 If you work out the epsilon closures you will only need 5 states.
+
+### Algorithm for Subset Construction (powerset construction)
+
+It is important in theory because it establishes that NFAs, despite their additional flexibility, are unable to recognize any language that cannot be recognized by some DFA. It is also important in practice for converting easier-to-construct NFAs into more efficiently executable DFAs. However, if the NFA has n states, the resulting DFA may have up to 2n states, an exponentially larger number, which sometimes makes the construction impractical for large NFAs.
+
+- Full list: complete list of discoverable DFA states
+- Work list: list of DFa states that have been discovered, but not processed yet.
+
+### Implementation
+
+There are tools that can translate our RegEx to DFA's for us. We would provide a file as such .
+
+```
+
+RegEx's
+*******
+
+- RegEx for Keywords (if, else, for , while)
+- RegEx for Ints
+- RegEx for Identifiers
+- RegEx for floats
+
+
+
+the union of all of these is whole programming language...
+
+Notice that the 'keyword' regEx is first in the file...this is to set priority over the 'identifier'. This will help in avoiding if an Keyword like 'for' 'if' 'else' is accidentally used as in Identifier...
+
+Each keyword will have it's own RegEx and be created as a seperate branch in an NFA...
+
+Another way to recognise 'keywords' in a language is to process them as 'identifiers' and then check them for being a 'keyword' or not. This would eliminate all of the branching in the NFA for processing unique keywords.
+
+There would need to be a 'Keyword Table' and the best way to implement it would be to make it a 'Hash Table'.
+Because we know exactly how many enteries in the Hash Table there is a search on it will be of constant O(1).
+
+This will reduce the amount of states involved with the FA , but then again there will be more 'identifier' written in a program than 'keywords', so do we want to check the keyword table for every indetifier processed? This is overhead that will effect the compile time.
+
+```
+
+### Scanner generator
+
+```
+                    Scanner generator
+            -----------------------------------------------------------------------------------------
+           |                                                                                         |
+RegEx ---> | Thomspson                                                                               |
+           | construction --> NFA --> Subset cont --> DFA --> DFA minimization algo --> code gen --> |-->  Scanner
+           |                                                                                         |      code
+            ------------------------------------------------------------------------------------------
+
+
+    This process is for one aspect in the building of compilier. It is not part of the compilation process.  It generates the code that will make up the 'scanner'. Which will in turn process the language into accepted tokens. It's a tool...'scanner tool'.
+
+    You can use 'Flex' to build a scanner.
+```
+
+### From DFA to Scanner Code
+
+Once the DFA are created we need to generate the code that implements or simulates that DFA
+
+- 2 ways to do it....
+
+1.  Table Driven Approach
+    - Table means 2-demensional array where rows are the 'states' and the columns are the 'symbols' of the language.
+2.  Direct-coded
+
+There needs to be an 'error' state that represents the end of a match.
+
+- The '=' operator can be used as an error state. (???).
+  When an error state is encountered you need to 'roll back' to the previous accept state. This is done on a 'stack', so to 'backtrack' you will need to 'pop' off the stack untill the accept state desired is reached.
+
+- How do we determine what is an accept state? ...Prob an object that has a field 'AcceptState = true;' or something like this.
+
+Tables can have lots of redundency that can be cleaned up...for example all letters [a-Z] will most likely have the same acceptence state. We can have two tables....one that establishes 'Categories' like 'numbers' which will simplfy it for the final table.
