@@ -35,3 +35,5 @@ In Scanners we write regular expressions to represent the valid tokens in a lang
 - Epsilon provide additional states for a given input. Additional options of state....makes visualizing the graph easier to have them (???).
 - 'Epsilon Closure' is the state an input is in plus all of the possible epsilon transitions available. Represents each element in the PowerSet...Every possible combination for a given input is inside the power set.
 - Power set is the 'set of all possible combinatory subsets of an NFA set....and each of those 'subsets' represents an 'Epsilon Closure'....(???).
+
+When ever there are more than one choice in an NFA what is happeneing is that new machines are being "Spawned". New and separate computational 'enviroments'. What will see in Push Down Automa....each NFA is provided a stack...so when a new machine is spawned it also recieves its own stack.

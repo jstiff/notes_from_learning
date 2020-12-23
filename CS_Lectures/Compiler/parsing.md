@@ -1,5 +1,11 @@
 # Parsing.
 
+Parsing is taking something that has no structure, and giving it structure.
+
+HTML (and CSS) which is parsed into a DOM
+
+Most programming is parsed into an AST before being interpreted or compiled into native binary (machine code), or byte compiled (into operations for a virtual machine processing engine such as LLVM or the JVM or the VM built into Python, etc)
+
 #### Context-Free Grammers
 
 - these grammers are NOT accepted by FSA like we see in Regular languages.
@@ -59,6 +65,9 @@ The scanner will process a file of source code and return all accepted strings a
   - It's convention to denote variables by Uppercase and terminals with lowercase.
 
   ```
+  S → aSb
+  S → ε
+
   With 'S --> aSb | epsilon'... production rules. We can derive the string aaabbb by generating a 'Derivation tree'. Parsing is 'automated' derivation based on algorithms....
 
   We can 'substitute'  S for aSb as many times as we want and then can end it by calling Epsilon.
@@ -96,7 +105,8 @@ X12       =     abc    +   dcf
 identifier     idntifier  Identifier
 
 Assign --> identifier = Expression                         Uppercase are non-terminal vaiables.
-Expression --> identifier + identifier                     lowercase 'identifier' means it's a terminal value
+Expression --> identifier Op identifier                     lowercase 'identifier' means it's a terminal value
+Op --> + | - | * | /
 
 
                             Assign
@@ -110,3 +120,70 @@ Expression --> identifier + identifier                     lowercase 'identifier
 
 
 ```
+
+- Using a grammer in a 'forward' direction means to **generate a sequence**. We can set up a machine which is a generalization of a NFA that can take in a string and accept/reject it. Not only do you need an answer to the accept/reject question, but also need to find a 'parse tree' for a given string.
+
+- **Parsing problem** ...is the problem of going from a string to a parse tree. Not just in Context free grammars, but of other grammars as well.
+
+- Having a single variable on the left side of the production rules signifies that it is 'context free'...(???)
+
+S --> aSb
+
+'context sensative' grammars have more than one variable on the left side and knowing whether or not you can use it will depend on the 'context'.....(???)
+
+#### Chomsky
+
+Chomsky created a 'containment hierarchy' of classes of formal grammars.
+
+A formal grammar of this type consists of a finite set of production rules (left-hand side → right-hand side), where each side consists of a finite sequence of the following symbols:
+
+- a finite set of nonterminal symbols (indicating that some production rule can yet be applied)
+- a finite set of terminal symbols (indicating that no production rule can be applied)
+- a start symbol (a distinguished nonterminal symbol)
+
+S → AB
+S → ε (where ε is the empty string)
+A → aS
+B → b
+
+```
+In formal language theory, a context-free grammar, G, is said to be in Chomsky normal form (first described by Noam Chomsky)[1] if all of its production rules are of the form:[citation needed]
+
+A → BC, or
+A → a, or
+S → ε,
+where A, B, and C are nonterminal symbols, the letter a is a terminal symbol (a symbol that represents a constant value), S is the start symbol, and ε denotes the empty string.
+```
+
+## Machines that can recognize Context Free Languages.
+
+#### Pushdown Automota
+
+We may need unbounded memory to recognize context-free languages.
+
+The finite automaton now can base its transition on both the current symbol being read and values stored in memory.
+
+Each transition
+
+- is based on the current input symbol and the top of the stack,
+- optionally pops the top of the stack, and
+- optionally pushes new symbols onto the stack.
+
+The language of a PDA is the set of strings that the PDA accepts. Which means our languages can grow in complexity and expressiveness in parallel with the level of computational power grows.
+
+PDA generalize NFA's...except that it has a 'stack'. Meaning it can write on to a memory device. NFA only has memory in as much as it can be encoded into the states.
+
+Pushdown automata are used in theories about what can be computed by machines. They are more capable than finite-state machines but less capable than Turing machines.
+
+- There seems to be a direct relationship between the expressivness of a language/grammar and how much computational power is available. When we do not have access to secondary memory devices we are limited to DFA and NFA machine models.
+
+### Palindrome
+
+Make a PDA that recognizes { 0^n 1^n | n >= 0 }....any number of 0's fallowed by the same number of 1's.
+
+We can utilize a 'stack' in a Push Down Automa by consuming the 0's from a tape and immedietley pushing them on to a stack. As soon as the NFA reads the first 1 it then triggers a 'pop()' function that pops a 0 off of the stack. If the number of 1's (which is equivalent to a pop() of a 0 ) are the same then the **stack will be empty**. We then know that the string consumed from the tape was indeed a 'Palindrome'.
+
+In PDA...when you read from the stack you are simultaneously poping it off the stack and it is gone forever. You can write it back if you want.
+
+-      a,b --> b         Where 'a' is read from the tape...'b' is then read/pop off the stack and 'b' is put on the stack.
+- A transition in a PDA is of the form **a,b -- c** where the first character 'a' is read from a tape...the next character 'b' is read and popped off the stack and then 'c' is what is written to the stack.
