@@ -1,5 +1,9 @@
 ### Rust
 
+- All behavior of data in Rust is implemented within **Traits**...there are two very important traits to know.
+  1. Copy --> will implicitly make copies if you break Rust normal rules...'there can only be one owner'. Primitives are able to break the rule, because they are safe to duplicate. For custom types you have the 'Clone' trait.
+  2. Clone -->
+- Traits are a set of function definitions for a given Type. Be it custom type of built in type. Think of traits as 'base classes'. You need to bring them into scope when you need them because they are the declarations...
 - Everything is immutable by default. Read-only access.
 - VERY strongly 'typed'.
 
@@ -35,3 +39,23 @@
 - tuples are usually implemented behind the scenes. We don't see them directly...usually used as intermidiate placeholders. They're used for function return values. So you can also desructure tuples...
   - let's say you have a function that returns three values...
     let (x,y,z) = function_example();
+
+## Const vs Let
+
+- Compilier will make a copy of the 'Const' value wherever it is used and 'Let' value is placed on the stack inside the stack frame. It can optimize for 'Const' at compile time...const takes an 'assignment binding'.
+- const is not for variables; it's for constant values which may not be stored anywhere; they're effectively an alias for a literal value.
+- The type of a constant **must** be declared, whereas the type of a variable may be declared.
+- A const does not represent a memory location but a value. const values are directly inlined at usage location
+- Constants can only be set to a constant expression, not to the result of a function call or anything that could only be determined at runtime.
+- constants may not be of a type that requires allocation on the heap, since they’re not known at compile time
+- The naming convention for const is SCREAMING_SNAKE_CASE.
+  The naming convention for let is snake_case.
+
+- Let values represent a memory location. Immutability for let binding is a compiler enforced thing can be changed with mut modifier. It is runtime construct. Always locally scopped. Their types can be inferred by the compiler.
+- Non-mut let declares an actual variable which is created at runtime, can be moved (and no longer accessible), and even have interior mutability (if it contains Cell members, for example)
+
+## Result and Option
+
+- These are both very helpful 'enums'
+  - **Result** provides you as a library writer....the opportunity to be informed that something went wrong that can probobly be recovered from. It at least gives you the opportunity to recover before BLOWING UP! In i/o...almost every method will return a 'Result'. A wrapper around that provides an 'Ok' with the value and 'Error' that will be a custom error handling. Nearly all i/o will return something...even if it fails. I think the .unwrap()...will 'cascade up' the call stack to point of failure and let you handle it....(???)
+  - **Options** are simular, but different. An 'optional' parameter for a function is something that may or may not be **present**, but that is different that something being **wrong**.
