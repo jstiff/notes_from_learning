@@ -2,7 +2,7 @@
 
 - list of tools to help make compilers.
 
-  <img src="../images/tools-list.png" alt="drawing" style="width:250px;"/>
+  <img src="../images/tools-list.png" alt="drawing" width="200"/>
 
 #### The first phase of a compilier has 3 general steps....
 
