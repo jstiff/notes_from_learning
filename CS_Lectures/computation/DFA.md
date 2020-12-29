@@ -25,37 +25,55 @@ String: sequence of symbols from that alphabet
 
 - In informal terms finite automaton (or finite state machine) is an abstract machine that has states and transitions between these states. It is always in one of its states and while it reads an input it switches from state to state. It has a start state and can have one or more end (accepting) states. Can be used to accept string values or map values to diff values. It's a mapping network of finite available states which 'language syntax value representations/entities' can traverse the 'machine' (computation entity) and ultimatly produce an intended outcome. In some cases that is 'acceptence' by the machine or value transistion/shift/translation.
 
-  'Finite Automata' is a model of a computation with a finite amount of memory or
-  states. FSA can be exeuted on any number of devices. Finite automata are used to recognize patterns of strings, regular expressions are string patterns used to generate FSA. Each can be converted between the other. Regex to FS and FS to Regex.
+Finite Automata can be represented as **graphs** or **tables**....they represent the same idea.
 
-  **Deterministic Machines** (DFA) mean there is an un-ambiguous mapping of a string element being processed to a definite state change. A string element being processed will never have more than one option in the next state change.
-  In a 'Deterministic Finite State Machine', the available 'states' are fixed. (allocated memory in the machine is fixed..perhapes it can live on the 'stack'...i'm not sure).
+'Inductive' proofs are a useful technique to prove FA.
 
-  We can say that a language that is accepted by a FSM is the set of alphanumeric values that the FSM will accept. Meaning that the FSM defines what language is by its 'computational acceptence' of it which is then regaurded as being Regular or FSM approved!!! I'm assuming then that a FSM can catch syntax errors in IDE's.
+### an **'Alphabet'** is a finite set of strings.
 
-  Regular expressions are patterns of text for which a FSM will accept. Specified pattern of the elements from a regular language from which a FSM will process and accept. Some Regex engines are implemented as Finite State Automota...grep, awk, and sed. These build a state machine based on the Regex pattern and use it to process the input strings. They uses the 'Thompson algorithm' to convert the regex expression into a NFA (at least the Unix grep..not sure).
+- ASKII or Unicode for example.
+- When learning FA some people like to limit the alphabet to a 'binary alphabet'.
+  - { 0, 1 }
 
-  ```
-  DFSM = M
-  Q = Set of States of M
-  Sigma = alphabet used for the strings
-  Delta = transition function
+a **String** is a sequence of the symbols of a given alphabet.
 
-  Q x Sigma -> Q ..... state takes a string and moves into another state.
+- Alphabet will be <sub>&Sigma;</sub>
 
-  ```
+and a string is a sequence for which **each element** is a member of <sub>&Sigma;</sub>
 
-  They describe the same languages. Not 'human' languages, but 'Formal'languages (set of strings accepted by some rule) They describe a particular form of language called **"Regular language"**. A language is regular if there is a Deterministic Finite Automota for it....
+<sub>&Sigma;\*</sub> = set of **all** strings over the alphabet <sub>&Sigma;</sub>
 
-  If a language set A is regualr and defined by Machine_1 and a set B is regular and defined by Machine_2...the **'Union'** of A and B will also be a regular language. In this instance the DFSM of each language set run in parallel while processing a given input and for the union to also be regular at least one of the Machines must end in an accepting state. Like the 'or' clause in logic
+'Finite Automata' is a model of a computation with a finite amount of memory or
+states. FSA can be exeuted on any number of devices. Finite automata are used to recognize patterns of strings, regular expressions are string patterns used to generate FSA. Each can be converted between the other. Regex to FS and FS to Regex.
 
-  For an **'Intersection'** of the two sets....(like the 'and' clause in logic)...both machines running in parallel must end in an accept state.
+**Deterministic Machines** (DFA) mean there is an un-ambiguous mapping of a string element being processed to a definite state change. A string element being processed will never have more than one option in the next state change.
+In a 'Deterministic Finite State Machine', the available 'states' are fixed. (allocated memory in the machine is fixed..perhapes it can live on the 'stack'...i'm not sure).
 
-  DFA's can handle Union and Intersection of 2 seperate Regular languages by processesing a single string is parrallel. A single string can be accepted by the Automata either by 'or' or 'and' acceptence state results. What we cannot do in DFA's is to 'concatenate' 2 diff strings from diff Regualr languages. For that we need a **NFA**.
+We can say that a language that is accepted by a FSM is the set of alphanumeric values that the FSM will accept. Meaning that the FSM defines what language is by its 'computational acceptence' of it which is then regaurded as being Regular or FSM approved!!! I'm assuming then that a FSM can catch syntax errors in IDE's.
 
-  - Variables, Numbers, URL's, email, phone number can be described by Reg Lang.
+Regular expressions are patterns of text for which a FSM will accept. Specified pattern of the elements from a regular language from which a FSM will process and accept. Some Regex engines are implemented as Finite State Automota...grep, awk, and sed. These build a state machine based on the Regex pattern and use it to process the input strings. They uses the 'Thompson algorithm' to convert the regex expression into a NFA (at least the Unix grep..not sure).
 
-  People prefer RegExpressions, but computers prefer Finite Autotomota. So there are programs that convert between the two.
+```
+DFSM = M
+Q = Set of States of M
+Sigma = alphabet used for the strings
+Delta = transition function
+
+Q x Sigma -> Q ..... state takes a string and moves into another state.
+
+```
+
+They describe the same languages. Not 'human' languages, but 'Formal'languages (set of strings accepted by some rule) They describe a particular form of language called **"Regular language"**. A language is regular if there is a Deterministic Finite Automota for it....
+
+If a language set A is regualr and defined by Machine_1 and a set B is regular and defined by Machine_2...the **'Union'** of A and B will also be a regular language. In this instance the DFSM of each language set run in parallel while processing a given input and for the union to also be regular at least one of the Machines must end in an accepting state. Like the 'or' clause in logic
+
+For an **'Intersection'** of the two sets....(like the 'and' clause in logic)...both machines running in parallel must end in an accept state.
+
+DFA's can handle Union and Intersection of 2 seperate Regular languages by processesing a single string is parrallel. A single string can be accepted by the Automata either by 'or' or 'and' acceptence state results. What we cannot do in DFA's is to 'concatenate' 2 diff strings from diff Regualr languages. For that we need a **NFA**.
+
+- Variables, Numbers, URL's, email, phone number can be described by Reg Lang.
+
+People prefer RegExpressions, but computers prefer Finite Autotomota. So there are programs that convert between the two.
 
 ```
 ex) Electric switch.

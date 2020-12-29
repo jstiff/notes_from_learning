@@ -11,7 +11,7 @@
   - automaton is a mathematical object that takes a word as input and decides whether to accept it or reject it. Since all computational problems are reducible into the accept/reject question on inputs, (all problem instances can be represented in a finite length of symbols).
   - automata theory plays a crucial role in computational theory.
 
-### Hierarchy of Automata...lowest to increasibg power.
+### Hierarchy of Automata...lowest to increasing power.
 
     0. Combinational logic (combinatorial)....('a type of digital logic which is implemented by Boolean circuits).
     1. Deterministic Finite Automaton (DFA)......'regular languages'
