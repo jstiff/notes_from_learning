@@ -43,6 +43,29 @@ and a string is a sequence for which **each element** is a member of <sub>&Sigma
 
 <sub>&Sigma;\*</sub> = set of **all** strings over the alphabet <sub>&Sigma;</sub>
 
+The empty string is denoted by epsilon <sub>&epsilon;</sub>
+
+example....the binary alphabet.
+
+- { 0, 1 }\* = { sub>&epsilon;</sub> , 0 , 1 , 00, 01 , 10 , 11, 000, 001 ......}
+
+### Formalism for defining languages.
+
+1. Q : finite set of states.
+2. <sub>&Sigma;</sub> : an input alphabet.
+3. <sub>&delta;</sub> : Transition function.
+4. q<sub>0</sub> : start state.
+5. F : set of Final states.
+
+### What makes an automaton work is the Transition function.
+
+- It takes two arguments
+  1. A State (q)
+  2. input symbol (a).
+- <sub>&delta;</sub>(q, a);
+  - the function delta is the state that the DFA goes to when it is in state q and it recieves input a...and is **total**...meaning it has a value for every state and symbol. If moving on to the next state is not wanted then you need to introduce a 'dead state'.
+    - **dead state** is a 'not accepting' state that has a transition back to itself for every input symbol.
+
 'Finite Automata' is a model of a computation with a finite amount of memory or
 states. FSA can be exeuted on any number of devices. Finite automata are used to recognize patterns of strings, regular expressions are string patterns used to generate FSA. Each can be converted between the other. Regex to FS and FS to Regex.
 
