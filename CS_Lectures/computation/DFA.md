@@ -66,8 +66,11 @@ example....the binary alphabet.
   - the function delta is the state that the DFA goes to when it is in state q and it recieves input a...and is **total**...meaning it has a value for every state and symbol. If moving on to the next state is not wanted then you need to introduce a 'dead state'.
     - **dead state** is a 'not accepting' state that has a transition back to itself for every input symbol.
 
-'Finite Automata' is a model of a computation with a finite amount of memory or
-states. FSA can be exeuted on any number of devices. Finite automata are used to recognize patterns of strings, regular expressions are string patterns used to generate FSA. Each can be converted between the other. Regex to FS and FS to Regex.
+### Extended Transition Function
+
+- Takes a state and a **string** as arguments. Not just a symbol as does a regular TF.
+  'Finite Automata' is a model of a computation with a finite amount of memory or
+  states. FSA can be exeuted on any number of devices. Finite automata are used to recognize patterns of strings, regular expressions are string patterns used to generate FSA. Each can be converted between the other. Regex to FS and FS to Regex.
 
 **Deterministic Machines** (DFA) mean there is an un-ambiguous mapping of a string element being processed to a definite state change. A string element being processed will never have more than one option in the next state change.
 In a 'Deterministic Finite State Machine', the available 'states' are fixed. (allocated memory in the machine is fixed..perhapes it can live on the 'stack'...i'm not sure).

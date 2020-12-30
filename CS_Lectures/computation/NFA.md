@@ -2,7 +2,10 @@
 
 The '\*' in a regular expression is syntax for a FSA to 'loop' in a particular state.
 
-In NFA we will have 'choices' or branching of the computation. Branching will be executed in parallel and every possible state is traversed in this computational model.
+In NFA we will have 'choices' or branching of the computation. Branching will be executed in parallel and every possible state is traversed in this computational model. It will succeed if one of the accept states that an NFA can have is acheived...while ignoring all of the wrong choices. This is thought of as 'guessing correctly'. I don't know about that, but ok.
+
+- NFA provides a 'web', 'graph' or 'matrix' of **many** possible routes or pathways to an accept state. There are many ways to get to an accept state. There needed to be a model of computation that was more flexible than DFA. NFA allow more possiblities theoretically...to implemement many possibilities..you must run parrallel computations. You need to spawn off new processes or threads (not sure which) and communicate between the threads/processes when an answer was arrived at....which in turn than accepts that input string...therefore being a computational machine that recognizes non-deterministic languages.
+- the **Transition Function** for and NFA now takes a **set of states** as an argument along with a string.
 
 An NFA differs from a DFA in that each state can transition to zero or more other states on each input symbol, and a state can also transition to others without reading a symbol.
 
@@ -10,7 +13,9 @@ The NFA accepts a given input stream if there is any way to reach a final state 
 
 Essentially each choice is a 'spawning' of a new machine. And the NFA accepts a string input if **any** one state is accepted. Multiple spawed threads????
 
-DFA are already considered equivalent to an NFA....but not all NFA are equivalent to DFA (????). To convert an NFA to a DFA through a **'Subset construction'**.
+DFA are already considered equivalent to an NFA....but not all NFA are equivalent to DFA (????). To convert an NFA to a DFA through a **'Subset construction'**. Subset construction is a proof for 'equivalence'...For any NFA, there is a DFA that accepts the same language...thus NFA's accept exactly the regular language.
+
+- Because the equivalent DFA might have up to q^n states...it becomes impossible to visual very quickly. Let's say an NFA has 10 states...then it is possible for the equivalent DFA to have a Million states. Luckily it's not as bad in practice as it is in theory.
 
 NFA's process more than one potential state at a time. There is 'branching' logic involved. Union of states.
 

@@ -199,12 +199,18 @@ In PDA...when you read from the stack you are simultaneously poping it off the s
   1 --> one character look ahead.
 
 - predictive parser: type that does not require 'backtracking'. With one lookahead character which is the best solution.
+- backtracking is eliminated by further restricting the grammar to allow us to successfully predict which rule to use.
 
-remeber that parsing is about matching an input string that has been validated by the scanner with a grammer.
+remember that parsing is about matching an input string that has been validated by the scanner with a grammer.
 
 - Top down Parsers **cannot handle** 'left recursion'....**S --> S alpha**...where S = Non-terminal and alpha is a string of grammer symbols. This will never terminate and keep genereating Non-terminal variables. You will have to eliminate 'left recursion' through a trick...converting from left to right recursion....(look it up???).
 
 - having a 'grammer' with a set of production rules also needs an 'order of operations' ...left , right derivations...there can be many combinations or ways to derive a string from a set of production rules. This means a grammer is **'ambiguous'**.
+- A CFG is said to ambiguous if there exists more than one derivation tree for the given input string i.e., more than one LeftMost Derivation Tree (LMDT) or RightMost Derivation Tree (RMDT).
+- Ambiguity is a property of grammar not languages. Ambiguous grammar is unlikely to be useful for a programming language, because two parse trees structures(or more) for the same string(program) implies two different meanings (executable programs) for the program.
+- there is no particular algorithm for removing the ambiguity of a grammar.
+
+- If a given parse tree is not correct for a given string and the execution of grammer...it must 'backtrack' and try another grammer rule (if available). To avoid 'backtracking', which is very complicated to implement...there is what is called **First and Fallow sets**...
 
 ## Parse tree.
 

@@ -1,5 +1,6 @@
 ## Automata
 
+- The purpose of Automata is to **define languages**...
 - the study of abstract machines and automata, as well as the computational problems that can be solved using them.
 - Automata is from the Greek meaning **'Self-making'**
   - an abstract self-propelled computing device which follows a predetermined sequence of operations.
@@ -42,3 +43,11 @@
         - automata theory on finite automata
         - A Petri net, also known as a place/transition (PT) net, is one of several mathematical modeling languages for the description of distributed systems.
         - supervisory control theory (SCT)
+
+### review
+
+- remember that a 'regular' language is that can or will be proccessed and acccepted by a DFA. A very well known and widely used example of a regular language are the strings that make up **floating point numbers**.
+- **Non-regular** languages have an unknowns....in languages that are 'balanced' for instance.
+  An example of balanced would be a sequence of parentheses that **can appear in an arithmetic expression**.
+
+  - {0,0,0,1,1,1} or {(), ()(), (()), (()()) ...}. There needs to be a mechnism that will allow for us to remember how many input values have come before...such as the 0's in the first example...in order to match the 1's.
