@@ -37,7 +37,7 @@
 /// Arc is a 'read-only' operation. to mutate the shared data you must use
 /// a Mutex inside the Arc type. Each new reference to the Arc type increments
 /// the counter by one....this is like reference counting in GC..but more
-/// expensicve to implement???? Maintaining atomicity is harder than in regular
+/// expensive to implement???? Maintaining atomicity is harder than in regular
 /// 'ref-counting'..look into why I don't know.
 ///
 ///  Condvar....is a conditional variable that lets a diff thread know that it
@@ -73,53 +73,32 @@
 use std::collections::VecDeque;
 use std::sync::{Arc, Condvar, Mutex};
 
-pub struct Sender<T> {
-    shared: Arc<Shared<T>>,
-}
 
-/// We use Arc::clone syntax to make explicit that we want Arc to
-/// be cloned and not what is inside of Arc.
 
-impl<T> Clone for Sender<T> {
-    fn clone(&self) -> Self {
-        let mut inner = self.shared.inner.lock().unwrap();
-        inner.senders += 1;
-        drop(inner);
-        Sender {
-            shared: Arc::clone(&self.shared),
-        }
-    }
-}
 
-impl<T> Drop for Sender<T> {
-    fn drop(&mut self) {
-        let mut inner = self.shared.inner.lock().unwrap();
-        inner.senders -= 1;
-        let was_last = inner.senders == 0;
-        drop(inner);
-        if was_last {
-            self.shared.available.notify_one();
-        }
-    }
-}
+
 /// 'self: &mut Self' === &mut self...Self is the type of the current object.
 /// Used as the first argument in methods in 'trait' and 'impl'. The instance
 /// of the struct the method is being called from. So, in the below example,  there is a mutable reference to the 'Sender' instance that this particular
 /// method is being called against.
 ///
-
-impl<T> Sender<T> {
-    pub fn send(&mut self, t: T) {
-        let mut inner = self.shared.inner.lock().unwrap();
-        inner.queue.push_back(t);
-        drop(inner);
-        self.shared.available.notify_one();
-    }
+pub struct Sender<T> {
+    shared: Arc<Shared<T>>,
 }
-
+// sending data down the channel transfers ownership of that data to the receiver.
 pub struct Receiver<T> {
     shared: Arc<Shared<T>>,
     buffer: VecDeque<T>,
+}
+
+struct Shared<T> {
+    inner: Mutex<Inner<T>>,
+    available: Condvar,
+}
+
+struct Inner<T> {
+    queue: VecDeque<T>,
+    senders: usize,
 }
 
 /// We want to make a 'recv' function that blocks if there is nothing there...
@@ -139,6 +118,44 @@ pub struct Receiver<T> {
 /// swap out the queue buffer with the internal one which is empty...??? The lock is taken
 /// fewer times with this setup and therefor it becomes easier to aquire.
 ///
+/// We use Arc::clone syntax to make explicit that we want Arc to
+/// be cloned and not what is inside of Arc.
+
+impl<T> Clone for Sender<T> {
+    fn clone(&self) -> Self {
+        let mut inner = self.shared.inner.lock().unwrap();
+        inner.senders += 1;
+        drop(inner);
+        Sender {
+            shared: Arc::clone(&self.shared),
+        }
+    }
+}
+
+// As Rust automatically calls the destructors of all contained fields, you don't have to implement Drop in most cases. But there are some cases where it is useful, for example for types which directly manage a resource. That resource may be memory, it may be a file descriptor, it may be a network socket. Once a value of that type is no longer going to be used, it should "clean up" its resource by freeing the memory or closing the file or socket. This is the job of a destructor, and therefore the job of Drop::drop.
+
+impl<T> Drop for Sender<T> {
+    fn drop(&mut self) {
+        let mut inner = self.shared.inner.lock().unwrap();
+        inner.senders -= 1;
+        let was_last = inner.senders == 0;
+        drop(inner);
+        if was_last {
+            self.shared.available.notify_one();
+        }
+    }
+}
+// 'push_back' is a method on the VecDeque type that appends to the back of the Vector...this is like a job queue. FIFO
+// 'notify_one()' is a method on the Condvar Type.....Wakes up one blocked thread on this condvar.
+impl<T> Sender<T> {
+    pub fn send(&mut self, t: T) {
+        let mut inner = self.shared.inner.lock().unwrap();
+        inner.queue.push_back(t);
+        drop(inner);
+        self.shared.available.notify_one();
+    }
+}
+
 impl<T> Receiver<T> {
     pub fn recv(&mut self) -> Option<T> {
         if let Some(t) = self.buffer.pop_front() {
@@ -176,15 +193,7 @@ impl<T> Iterator for Receiver<T> {
     }
 }
 
-struct Inner<T> {
-    queue: VecDeque<T>,
-    senders: usize,
-}
 
-struct Shared<T> {
-    inner: Mutex<Inner<T>>,
-    available: Condvar,
-}
 
 /// CHECK line 214. Not sure 'buffer: VexDeque::new() is even remotely correct. Tried to fix a
 /// 'missing field buffer in intializer for Reciever' error

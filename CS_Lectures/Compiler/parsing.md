@@ -212,6 +212,11 @@ remember that parsing is about matching an input string that has been validated 
 
 - If a given parse tree is not correct for a given string and the execution of grammer...it must 'backtrack' and try another grammer rule (if available). To avoid 'backtracking', which is very complicated to implement...there is what is called **First and Fallow sets**...
 
+## First and Fallow sets.
+
+- Why do we need to compute the 'first and fallow' when doing parsing?
+  -
+
 ## Parse tree.
 
 [Click...paper on parse-trees](<https://eng.libretexts.org/Bookshelves/Computer_Science/Book%3A_Foundations_of_Computation_(Critchlow_and_Eck)/04%3A_Grammars/4.03%3A_Parsing_and_Parse_Trees>)
