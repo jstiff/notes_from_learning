@@ -1,8 +1,23 @@
 ### Rust
 
-#### Rust uses an 'Affine Type System'
+As a language, Rust really blends strong academic theory with Engineering.
 
-- Affine Logic is a version of 'Linear Logic'...
+#### Rust uses an 'Affine Type System (Substructual)'
+
+- This is academic speak for the 'Ownership' type system.
+
+- Affine Logic is a version of 'Linear Logic'...with weakening. ???
+- Rust type system is designed to insure...
+
+  - An 'object' can either be:
+
+  1. Mutable
+
+     or
+
+  2. Can have multiple immutable active aliases.
+
+     - **cannot have both though**
 
   - Linear logic is sort of a 'resource sensitive' logic....meaning you **can't reuse stuff**.
   - This logic takes into account the emphemeral realities...if you have a dollar you have it until you use it, then it is gone forever!!!! Resources are consumed!!! yes yes?
