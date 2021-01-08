@@ -147,6 +147,7 @@ impl<T> Drop for Sender<T> {
 }
 // 'push_back' is a method on the VecDeque type that appends to the back of the Vector...this is like a job queue. FIFO
 // 'notify_one()' is a method on the Condvar Type.....Wakes up one blocked thread on this condvar.
+// both sending/receiving returns a Result...not implemented here though. 
 impl<T> Sender<T> {
     pub fn send(&mut self, t: T) {
         let mut inner = self.shared.inner.lock().unwrap();

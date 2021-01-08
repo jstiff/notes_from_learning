@@ -62,3 +62,62 @@ As a language, Rust really blends strong academic theory with Engineering.
 - ***
 
 ---
+
+### Mutual Exclusion in Rust.
+
+```
+How does Rust support mutating alliased references...?
+
+ex)
+
+    Pointer based data structures like 'Doublely-linked list'.
+    Synchronization mechanisims...'Locks, channels , semaphores'.
+    Memory managment...'Ref counting'.
+
+- collaberation between two diff API's...Arc and Mutex provides us with a way to implement 'aliased mutable state'...
+
+let data = Arc::new(Mutex::new(x));
+
+
+
+```
+
+- Mutex: provides synchronized access to some object through a 'lock'. If you have an Object<T> you can **wrap** it in a Mutex and in order to get access to Object<T> you need to aquire the 'lock'.
+- Arc: allows dynamic sharing of that Mutex by implementing 'reference counting'. It 'Wraps' the mutex in a reference counting object...
+
+#### Rust is actually implemented with 'unsafe' code.
+
+- In order to implemented shared mutablility there must be unsafe code...???
+- What Rust provides are these API's that are technically implmeneted in a way that makes being a client of the Api safe to use. So, it's built on a confidently designed abstraction layer that we can be 'safe' in Rust.
+
+### Enter stage left....'RustBelt'.
+
+- Goal of 'rustbelt' is to establish the 1st logical foundations for the language.
+
+  - Use this logic to verify the safety of the Rust core type system and std libraries.
+  - Give developers the tools to saftly evolve the language.
+
+- What are they trying to prove? What is 'safety'?
+  - The 'standard' is what is called **'syntactic safety'**. This is taught a lot and used because it is very simple, but it will **not** work for Rust. As soon as you have any unsafe code it does not work.
+  - What RustBelt tries to do is 'generalize to **semantic safety**'.
+    - Sort of lift up the idea of safety to mean it is safe 'if no well-typed code using it can have undifined behavior'
+    - What exactly is 'undefined behavior'?????
+      - Basically, a standard notion of **not accessing memory outside the regions that are allocated**
+      - or not haveing data races based on some 'operational definition' of what a data race is....no unsynchronized access to memory from diff threads.
+      - or means...there is an 'operational semantics' they give for a language called **Lambda Rust**...which is a sort of 'core Rust Lambda Calculus'...that is modled after the 'MIR' (Middle Intermediate Representation) of Rust...that has an 'operational semantics' that has the ability to 'get stuck'...get into some bad state. And the prove that 'well typed' Rust will never get into these states.
+- There is a problem with the 'syntactic safety' approach in that it doesn't allow for expanding the primitives of the language...for instance in building API's. Without having to go back and revise the existing proofs.
+
+#### Semantic Safety
+
+-
+
+```
+ Library interface  ->  Semantic Model --> Safety Contract ---> Logical Satisfaction  ==> Library Implementation.
+```
+
+- So the standard libraries have been proved and are 'safe by **construction**'...(???). While anything implemented internally that uses unsafe code needs to be 'manually verified'. It needs to be checked against the Safety Contract....(???). Arc, Mutex, RefCell, channel...need to be manually verified.
+- RustBelt uses 'Coq' (interactive theorem prover) to assist in updating the model.
+- Rest of talk RustBelt[POPL'18] paper
+  - The key challenge is choosing what logic to use...
+    - They use a derivative of **'Seperation Logic'. An extension of Hoare logic**..for reasoning about pointer-manipulating programs.
+    - It's a perfect fit for Rust becuase it models 'Ownership' nicely.

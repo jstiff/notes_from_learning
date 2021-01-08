@@ -58,6 +58,7 @@ Cpu's are 'bound'...**i/o bound** or affected by the time it takes for i/o reque
 
 #### Rust uses a 'User Mode Scheduler' for threading...
 
+-
 - when you call ...thread::spawn()...this will generate a C based sys call that the Operating system can do.
 
 #### Thread Pools
