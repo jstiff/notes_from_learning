@@ -78,8 +78,37 @@ Example from Docs...
 ```
 
 - output of this step is:
+
   1. a 'code' === string of the script tag data...
   2. a 'tags' === array of the rest of the HTMl tag identifiers.
+
+  ```
+    this is what parse5 and the Svelte compilier will output in a simplified way...it seperates out the code from inbetween the \<script> tags and the rest of the html tags in the parse5 parse objects.
+
+        code:: let count = 0;
+
+        const increment = () => {
+                count += 1;
+        };
+  tags:: [
+  {
+    nodeName: 'h1',
+    tagName: 'h1',
+    attrs: [],
+    namespaceURI: 'http://www.w3.org/1999/xhtml',
+    childNodes: [ [Object] ],
+    parentNode: { nodeName: '#document-fragment', childNodes: [Array] }
+  },
+  {
+    nodeName: 'p',
+    tagName: 'p',
+    attrs: [],
+    namespaceURI: 'http://www.w3.org/1999/xhtml',
+    childNodes: [ [Object] ],
+    parentNode: { nodeName: '#document-fragment', childNodes: [Array] }
+  }
+  ]
+  ```
 
 #### Step Two.
 
@@ -137,7 +166,7 @@ AstExplorer....acorn.
               "type": "Identifier",
               "start": 11,
               "end": 15,
-              "name": "name"
+              "name": "poop"
             },
             "init": null
           }
@@ -148,3 +177,11 @@ AstExplorer....acorn.
       "source": null
     },
 ```
+
+- this step creates:
+  1. 'props': an array that is all of the export variable names. In this case it's 'poop'.
+  2. 'rest': an array with everything else. All other declarations...whole object I think.
+
+#### Step Three
+
+- parse the 'tags' from Step One...all the HTML identifiers.
