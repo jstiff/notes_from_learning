@@ -1,27 +1,14 @@
-### StdStreams....stdin, stdout, stderr
+### Shell [gnu docs 'what is a shell'](https://www.gnu.org/software/bash/manual/html_node/What-is-a-shell_003f.html#What-is-a-shell_003f)
 
-- standard streams are interconnected input and output communication channels between a computer program and its environment when it begins execution.
-- Originally I/O happened via a physically connected system console (input via keyboard, output via monitor), but standard streams abstract this.
--
-- One of Unix's several groundbreaking advances was abstract devices.
-  - In most operating systems predating Unix, programs had to explicitly connect to the appropriate input and output devices.
-
-#### Redirection
-
-- a function common to most command-line interpreters, including the various Unix shells that can redirect standard streams to user-specified locations.
-- Redirection is a form of interprocess communication. Some forms of IPC include:
-  - File:
-  - Socket:
-  - Message Queue:
-  - Pipe:
-  - Message passing:
-  - etc...
-
-### Shell
-
+- At its base, a shell is simply a macro processor that executes commands. The term macro processor means functionality where text and symbols are expanded to create larger expressions.
+- A Unix shell is both a command interpreter and a programming language. (It's like a programming language that can interpret user input) As a command interpreter, the shell provides the user interface to the rich set of GNU utilities. The programming language features allow these utilities to be combined.
+  - shell languages use a 'command based' syntax and semantics.
+    - Process command: 'ls' is a process command. The shell looks for this command, by checking its PATH.
+      - PATH is an enviroment variable listing the routes to all the bin directories that store all of the commands a shell will have access to. You can provide **direct paths** like /usr/bin/ls. If you simply type 'ls' then the shell will search the entire path untill it finds the **first** match.
+- Like any high-level language, the shell provides variables, flow control constructs, quoting, and functions.
 - The shell is your interface to the operating system. It acts as a command interpreter.
 - It is named a shell because it is the outermost layer around the operating system.
-- A terminal is an interface that runs a 'shell' program.
+- A terminal is an interface that runs a 'shell' program...or sends it the user input.
   - the shell is a way to access the Kernal.
 - ex) command “ls” is a file, that when it is executed, the system creates a process corresponding to an instance of a running program and that has an ID or PID, which is not more than a unique number, used by several functions or system calls (syscalls) to manipulate these processes.
   - the "ls" is a child process that is spawned by the parent process(Shell itself).
@@ -39,3 +26,14 @@
     - In the midst of our jubilation, it was discovered that the chdir (change current directory) command had stopped working. There was much reading of code and anxious introspection about how the addition of fork could have broken the chdir call. Finally the truth dawned: in the old system chdir was an ordinary command; it adjusted the current directory of the (unique) process attached to the terminal. Under the new system, the chdir command correctly changed the current directory of the process created to execute it, but this process promptly terminated and had no effect whatsoever on its parent shell! It was necessary to make chdir a special command, executed internally within the shell. It turns out that several command-like functions have the same property, for example login.
     - Source: Dennis M. Ritchie, “The Evolution of the Unix Time-sharing System”, AT&T Bell Laboratories Technical Journal 63(6), Part 2, Oct. 1984, pp.1577–93
       - Because a new process is created to execute each command, chdir would be ineffective if it were written as a normal command. It is therefore recognized and executed by the Shell.
+
+### Shell Operation.
+
+- description of the shell’s operation when it reads and executes a command..
+  1. Reads its input from a file (see Shell Scripts), from a string supplied as an argument to the -c invocation option (see Invoking Bash), or from the user’s terminal.
+  2. Breaks the input into words and operators, obeying the quoting rules described in Quoting. These tokens are separated by metacharacters. Alias expansion is performed by this step (see Aliases).
+  3. Parses the tokens into simple and compound commands (see Shell Commands).
+  4. Performs the various shell expansions (see Shell Expansions), breaking the expanded tokens into lists of filenames (see Filename Expansion) and commands and arguments.
+  5. Performs any necessary redirections (see Redirections) and removes the redirection operators and their operands from the argument list.
+  6. Executes the command (see Executing Commands).
+  7. Optionally waits for the command to complete and collects its exit status (see Exit Status).

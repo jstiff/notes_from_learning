@@ -1,9 +1,9 @@
-## Backend phase of a compilier.
+## Backend phase of a compiler.
 
 - This is ideally where the different hardware architectures will be targeted.
   'gcc' has a pretty huge backend that targets all architectures.
 
-  In this step the compilier
+  In this step the compiler
 
   1. Instruction selection
   2. Instruction Scheduling.

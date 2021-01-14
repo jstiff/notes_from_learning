@@ -10,7 +10,7 @@ Most programming is parsed into an AST before being interpreted or compiled into
 
 - these grammers are NOT accepted by FSA like we see in Regular languages.
 - These recognize a larger class of languages...not modeled as a 'machine'.
-  have practical applications in languages and compilier design.
+  have practical applications in languages and compiler design.
 - Context free grammers are used in the building of Parsers...
 
 ---
@@ -214,8 +214,7 @@ remember that parsing is about matching an input string that has been validated 
 
 ## First and Fallow sets.
 
-- Why do we need to compute the 'first and fallow' when doing parsing?
-  -
+- ## Why do we need to compute the 'first and fallow' when doing parsing?
 
 ## Parse tree.
 

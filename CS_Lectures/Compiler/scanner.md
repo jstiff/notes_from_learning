@@ -8,7 +8,7 @@ Finite Automota and RegEx are tools for 'recognising' the language....'recognize
 
 - Remember the process essentially is Regex --> NFA --> DFA conversion.
 
-Scanner is built with these concepts and a scanner is the stage of the compilier in which we recognise words(tokens). Not sentences(statements).
+Scanner is built with these concepts and a scanner is the stage of the compiler in which we recognise words(tokens). Not sentences(statements).
 
 ```
                         human  |  machine
@@ -31,7 +31,7 @@ RegEx for unsigned int
     [0-9]*   ---> allows for leading 0's like 0000
     0 | [1-9][0-9]* ---> does not allow leading o's
 
-    Not having leading 0's is a design choice...when building a compilier we simply need to know what the designers of the language prefer so the compilier can be built accordingly.
+    Not having leading 0's is a design choice...when building a compiler we simply need to know what the designers of the language prefer so the compiler can be built accordingly.
 
 RegEx for language 'Identifiers'.
 ( _ | [a-z])([a-Z] | [0-9] | _ )*
@@ -165,7 +165,7 @@ RegEx ---> | Thomspson                                                          
             ------------------------------------------------------------------------------------------
 
 
-    This process is for one aspect in the building of compilier. It is not part of the compilation process.  It generates the code that will make up the 'scanner'. Which will in turn process the language into accepted tokens. It's a tool...'scanner tool'.
+    This process is for one aspect in the building of compiler. It is not part of the compilation process.  It generates the code that will make up the 'scanner'. Which will in turn process the language into accepted tokens. It's a tool...'scanner tool'.
 
     You can use 'Flex' to build a scanner.
 ```

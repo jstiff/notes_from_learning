@@ -1,4 +1,4 @@
-### Optimizer phase of a compilier.
+### Optimizer phase of a compiler.
 
 - Ideally, this step should be machine independent. (Machine dependent code done in 'backend' phase).
   It is only concerened with the code. Tries to optimize the code in an hardware/machine 'independent' way.
