@@ -185,3 +185,21 @@ AstExplorer....acorn.
 #### Step Three
 
 - parse the 'tags' from Step One...all the HTML identifiers.
+- If there are any classNames or onClick callbacks they will be parsed out and bundled into an object...
+
+```
+Step three will generate two arrays.
+    const nodes = []
+    const listeners = []
+
+        listeners.push({
+          index,
+          event: attr.name.split(':')[1],
+          handler: attr.value
+        })
+
+```
+
+#### Step Four.
+
+- Component Generator.
