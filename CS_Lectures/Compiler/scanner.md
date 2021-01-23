@@ -1,5 +1,12 @@
 ## Scanner
 
+- **RegExpressions**..only deal with Chomsky level 3(regular grammers) and are used in.
+  1. Pattern matching!
+  2. Lexical analysis for scanners...
+  - 1951 Stephen Kleene invented RegEx.
+  - 1956 Noam Chomsky defined hierarchy of languages.
+  - Ken Thompson popularized the 2 practical uses for RegEx discussed above.
+
 When you are building a scanner you are essentially defining all of the possible /'legal' tokens in that given language.
 
 From the perspective of the scanner a valid language is a sequence of valid tokens that are defined to be valid.
