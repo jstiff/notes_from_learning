@@ -57,3 +57,7 @@ fn lang_start(main: fn(), argc: isize, argv: *const *const u8) -> isize {
 
 
 ```
+
+### VGA Text buffer.
+
+- 0xb8000 is the address for
