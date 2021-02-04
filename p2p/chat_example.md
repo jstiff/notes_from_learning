@@ -75,4 +75,48 @@ pub fn build_tcp_ws_noise_mplex_yamux(keypair: identity::Keypair)
         let trans_clone = transport.clone();
         transport.or_transport(websocket::WsConfig::new(trans_clone))
     };
+
+```
+
+```
+#### struct MyBehaviour {
+
+        floodsub: Floodsub,
+        mdns: Mdns,
+
+        // Struct fields which do not implement NetworkBehaviour need to be ignored
+        #[behaviour(ignore)]
+        #[allow(dead_code)]
+        ignored_member: bool,
+    }
+
+```
+
+mDns
+
+pub struct Mdns {
+/// The inner service.
+service: MdnsBusyWrapper,
+
+    /// List of nodes that we have discovered, the address, and when their TTL expires.
+    ///
+    /// Each combination of `PeerId` and `Multiaddr` can only appear once, but the same `PeerId`
+    /// can appear multiple times.
+    discovered_nodes: SmallVec<[(PeerId, Multiaddr, Instant); 8]>,
+
+    /// Future that fires when the TTL of at least one node in `discovered_nodes` expires.
+    ///
+    /// `None` if `discovered_nodes` is empty.
+    closest_expiration: Option<Timer>,
+
+}
+
+enum MdnsBusyWrapper {
+Free(MdnsService),
+Busy(Pin<Box<dyn Future<Output = (MdnsService, MdnsPacket)> + Send>>),
+Poisoned,
+}
+
+```
+
 ```

@@ -1,5 +1,7 @@
 ### P2P
 
+- one of the defining characteristics of a peer-to-peer network is that they do not require a priviliged set of “servers” which behave completely differently from their “clients”, as is the case in the the predominant client / server model
+
 - generally composed of 4 things:
 
   1. each 'node' on the network is identified by a **public key**.

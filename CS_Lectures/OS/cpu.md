@@ -10,6 +10,14 @@ Cpu's are 'bound'...**i/o bound** or affected by the time it takes for i/o reque
 - When the hard drive is done with the request and the relevant data has been loaded into RAM through DMA, it issues an interrupt request which informs the CPU that the data has been loaded into RAM. At this point the CPU can transfer control back to an originating process.
 - CPU does not need to micromanage all tasks involved with I/O. At one time this used to be the case, but these tricks (interrupts, DMA, special controllers) were invented in order to improve CPU performance and make things more efficient.
 
+#### Event Driven Model
+
+- Node...where you have a **single thread** that also has an 'event loop'. This model has low overhead.
+
+#### Thread and Event driven model...??
+
+- Say you have 8 cores on your machine. You could set up 8 threads each having their own event loop. This would be parallism and I/O concurrency at the same time.
+
 #### Threads...
 
 - A thread is the smallest possible segment of sequenced instructions that can be independently managed by a CPU scheduler... threads give a program parallelism – if a program has multiple threads, each of those threads could run independently on multiple CPU cores, making the program exponentially faster.
