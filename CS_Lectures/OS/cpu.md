@@ -18,7 +18,7 @@ Cpu's are 'bound'...**i/o bound** or affected by the time it takes for i/o reque
 
 - Say you have 8 cores on your machine. You could set up 8 threads each having their own event loop. This would be parallism and I/O concurrency at the same time.
 
-#### Threads...
+#### Threads...abstraction over the CPU
 
 - A thread is the smallest possible segment of sequenced instructions that can be independently managed by a CPU scheduler... threads give a program parallelism – if a program has multiple threads, each of those threads could run independently on multiple CPU cores, making the program exponentially faster.
 - Threads and processes are different but similar. A process **defines the address space, text, resources**, and so on needed to complete some unit of work for a computer complete. A thread defines a **single sequential execution stream within a process**. So a thread can be thought of as a unit within a process (assuming that the programmer has designated threads). There can be many threads within a process, and many processes within a computer. **Threads are bound to a single process and cannot go outside the process**. Within each process, the address space is shared and **no system calls are required** to cooperate amongst threads.
