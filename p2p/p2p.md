@@ -1,6 +1,7 @@
 ### P2P
 
-- one of the defining characteristics of a peer-to-peer network is that they do not require a priviliged set of “servers” which behave completely differently from their “clients”, as is the case in the the predominant client / server model
+- one of the defining characteristics of a peer-to-peer network is that they do not require a priviliged set of “servers” which behave completely differently from their “clients”, as is the case in the the predominant client/server model.
+- Each node in a p2p network plays the role of client and server...
 
 - generally composed of 4 things:
 
