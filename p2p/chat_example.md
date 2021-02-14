@@ -79,7 +79,7 @@ pub fn build_tcp_ws_noise_mplex_yamux(keypair: identity::Keypair)
 ```
 
 ```
-#### struct MyBehaviour {
+    struct MyBehaviour {
 
         floodsub: Floodsub,
         mdns: Mdns,
