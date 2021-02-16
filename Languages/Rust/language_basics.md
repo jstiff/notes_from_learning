@@ -1,3 +1,7 @@
+### Rust
+
+- this language seems to be a nice blending of low level and high level programming. Great type system and can write in Functional Programming style. Or low level C style systems...
+
 - All behavior of data in Rust is implemented within **Traits**...there are two very important traits to know.
   1. Copy --> will implicitly make copies if you break Rust normal rules...'there can only be one owner'. Primitives are able to break the rule, because they are safe to duplicate. For custom types you have the 'Clone' trait.
   2. Clone -->
