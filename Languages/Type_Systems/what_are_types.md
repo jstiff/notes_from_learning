@@ -9,6 +9,5 @@
 
 #### Advantages provided by programmer-specified type systems.
 
-    1. Abstraction: Types enable programmers to think at a higher level than the bit or byte, not bothering with low-level implementation.
-        - think of a string as a set of character values instead of as a mere array of bytes.
-    2. Documentation: In more expressive type systems, types can serve as a form of documentation clarifying the intent of the programmer.
+1. Abstraction: Types enable programmers to think at a higher level than the bit or byte, not bothering with low-level implementation. - think of a string as a set of character values instead of as a mere array of bytes.
+2. Documentation: In more expressive type systems, types can serve as a form of documentation clarifying the intent of the programmer.
