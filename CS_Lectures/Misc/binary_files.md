@@ -6,4 +6,8 @@
 - **every** file that has content is a binary file, **every single one without exception**.
   - the file extension only provides information on how to interpret the 8 bit contiguous data(bytes).
     - all just bytes.
+    - headers are used to provide more information about what kind of data a binary is
+      - Executable and Linkable Format (ELF).
+        - common standard file format for executable files, object code, shared libraries, and core dumps.
+      -
 - how does the binary map to current?

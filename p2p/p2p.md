@@ -112,19 +112,48 @@ TPS....Transactions Per Second...
 
 ### libp2p
 
-- Modled around 'Process addressing'
-  - Find, connect and authenticate **processes**.
-  - 1st class project based on IPFS(inter-planetary file system)
-    - IPFS: uses a 'Content Addressing' model...find, fetch and authenticate **content**.
-- Built from many many modular peices...
+- provides composable building blocks for making p2p networking layer...
 
-  - Transports
-  - Content Routing
-  - Stream Multiplexers
-  - Record Stores
-  - Crypto Channels
-  - Peer discovery
-  - many more....
+  - runs on many runtimes....server, web, embeded, mobile...
+  - libp2p originated on IPFS (interPlanetary File System).
+    - some users of libp2p
+      - IPFS
+      - FileCoin
+      - Polkadot
+      - Ethereum 2.0
+      - Ox
+      - Golem
+      - MetaMask....
+  - When you examine the network stack of these companies closely,..they look very similar.
+
+- 'Decentralized Process Addressing'...(IPFS: uses a 'Content Addressing' model...???)
+  - ability to **locate**, **connect**, **authenticate**, **negotiate** and **interact** efficiently with any
+    process in the world **no matter the runtime**. Can be a server, browser, IoT, etc. As long as the **identity** of the process is **cryptographically derived** from its public key. even as those processes **relocate**, **roam**, **evolve** and **mutate** over time. This is in contrast to IP network 'endpoint addressing'.
+
+#### Multiaddrs
+
+- fundamental building block.
+
+  - 'Composable, future-proof, upgradable, transport-agnostic addresses.
+  - 'byte packed'.
+  -
+
+---
+
+- Transports
+
+  - layer 4 of libp2p.
+  - Think of them as 'connection factories'.
+  - They're a core abstraction.
+  - capable of dialing and listening for connections.
+  - They produce 'raw connections'..socket/sessions.
+
+- Content Routing
+- Stream Multiplexers
+- Record Stores
+- Crypto Channels
+- Peer discovery
+- many more....
 
 - RFC 1958
 - RFC 3439
