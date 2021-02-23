@@ -4,6 +4,8 @@ From a stackOverflow post. [here](https://stackoverflow.com/questions/45935100/h
 
 ---
 
+- closures can capture values from the **scope** in which they’re **defined**.
+
 ```
 fn main() {
     let a = 6;
