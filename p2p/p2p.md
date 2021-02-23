@@ -138,6 +138,8 @@ TPS....Transactions Per Second...
   - 'byte packed'.
   -
 
+- 'Protocol handling'...think of them as REST endpoints.
+
 ---
 
 - Transports
