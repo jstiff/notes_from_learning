@@ -5,6 +5,7 @@ From a stackOverflow post. [here](https://stackoverflow.com/questions/45935100/h
 ---
 
 - closures can capture values from the **scope** in which they’re **defined**.
+- in a closure you can use the variables defined outside the closure body but accessible in its scope.
 
 ```
 fn main() {
@@ -53,3 +54,12 @@ fn main() {
 ```
 
 ...nothing magical is happening. They boil down to a regular function call with an extra initial "context" argument.
+
+---
+
+- closure traits...Fn(), MutFn() and fnOnce(). Are special traits. ???
+
+---
+
+The 'move' keyword....closures are cleaver in that they capture the variables in their scope by reference (&)...
+in a situation like multi threads...Channels...we have a reciever that literally needs to be passed between all of the theads. wrapping the reciever in a Mutex is not enouph. What is really going on is that the closure is capturing &Mutex\<reciever>. The move keyword is reposible for literally moving ownership into that thread. Something like that...???
