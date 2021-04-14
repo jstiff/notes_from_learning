@@ -49,4 +49,11 @@
 
 ## Consensus
 
--
+- every blockchain has it's own currency. Ethereum is 'Ether'...etc. What does this mean? how will the world agree on a single currency? I doubt there will be.
+
+### Hard Fork!!
+
+- right now the social consensus seems to be all in for Bitcoin...but once in awhile there is a 'hard fork' of the blockchain....'Bitcoin Cash' that maintains or matches the level of social consensus that the original currency has making it a legitamite store of value.
+
+
+

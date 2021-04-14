@@ -61,5 +61,16 @@ fn main() {
 
 ---
 
-The 'move' keyword....closures are cleaver in that they capture the variables in their scope by reference (&)...
-in a situation like multi threads...Channels...we have a reciever that literally needs to be passed between all of the theads. wrapping the reciever in a Mutex is not enouph. What is really going on is that the closure is capturing &Mutex\<reciever>. The move keyword is reposible for literally moving ownership into that thread. Something like that...???
+The 'move' keyword....closures are cleaver in that they capture the variables in their scope by reference (&...compilier converts it. everytime? idk)...
+in a situation like multi threads...Channels...we have a 'Reciever' that literally needs to be passed between all of the theads. wrapping the reciever in a Mutex is not enouph. What is really going on is that the closure is capturing &Mutex\<reciever>. The move keyword is reposible for literally moving ownership into that thread. Something like that...???
+
+from 'Rust Reference'..."Without the move keyword, the closure expression infers how it captures each variable from its environment, **preferring to capture by shared reference**, effectively borrowing all outer variables mentioned inside the closure's body."
+
+- common pattern seen a lot in Rust is the 'Arc::new(Mutex::new(thing))'.
+  - Mutex for exclusive access.
+  - Arc for having multiple owners safely.
+
+from [Guide to Rustc Development](https://rustc-dev-guide.rust-lang.org/closure.html)
+
+- Closures in Rust are effectively "desugared" into structs that contain the values they use (or references to the values they use) from their creator's stack frame.
+- has to figure out which of the closure traits (Fn, FnMut, or FnOnce) a closure is capable of implementing.

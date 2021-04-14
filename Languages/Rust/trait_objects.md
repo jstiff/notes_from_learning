@@ -14,3 +14,5 @@
 - a 'trait object' is a trait that is wrapped in a Box, Arc or Rc...which simply means it is **placed on the heap**.
 - Dynamic dispatch is calling these traits from the heap...using a 'virtual table'.
 - The purpose of dynamic dispatch is to defer the selection of an appropriate implementation until the run time type of a parameter (or multiple parameters) is known.
+- to call methods in the trait object you **go through a V-Table**...
+  - vtable (dispatch table, virtual method table, etc):
