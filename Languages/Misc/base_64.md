@@ -13,7 +13,8 @@
         3.   010010 000110 010101 111001
                 18    6       21    57         these are mapped to a base64 chart
 
-                S     G       V      5
+                S     G       V      5          these are ASCKII values that will not go over 7 bits...which was 
+                                                historically a problem to send over the wire. 
 
 
                 "hey" == SGV5

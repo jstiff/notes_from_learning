@@ -61,3 +61,9 @@
 - These are both very helpful 'enums'
   - **Result** provides you as a library writer....the opportunity to be informed that something went wrong that can probobly be recovered from. It at least gives you the opportunity to recover before BLOWING UP! In i/o...almost every method will return a 'Result'. A wrapper around that provides an 'Ok' with the value and 'Error' that will be a custom error handling. Nearly all i/o will return something...even if it fails. I think the .unwrap()...will 'cascade up' the call stack to point of failure and let you handle it....(???)
   - **Options** are simular, but different. An 'optional' parameter for a function is something that may or may not be **present**, but that is different that something being **wrong**.
+
+---
+
+### i64
+
+- this type is easily copied on the hardware so it can be accessed on stack with no problem..the ownership is acheived cheaply due to this copying......while the 'String' type is on the heap....there is no copy of it...it would be a copy of a pointer to the string on the heap...meaning there are immediate ownership issues. would have to 'clone()' it.
