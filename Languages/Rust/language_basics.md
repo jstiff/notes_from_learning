@@ -67,3 +67,35 @@
 ### i64
 
 - this type is easily copied on the hardware so it can be accessed on stack with no problem..the ownership is acheived cheaply due to this copying......while the 'String' type is on the heap....there is no copy of it...it would be a copy of a pointer to the string on the heap...meaning there are immediate ownership issues. would have to 'clone()' it.
+
+### Remember...
+
+- As a rule of thumb for whether something has to be allocated: if you know the amount of space the value will use up without running the program, it’s **stored on the stack**. If you **don’t know** something’s size until runtime, **it’s allocated on the heap**.
+
+### Speed and Memory...?
+
+- the absolute best place for your data - **registers**. The more work you can do without non-local writes the more that rustc and LLVM can assume about your data’s access patterns. This is good because it means that data can be mapped to the CPU’s physical registers, which are the fastest memory on your entire computer.
+- the less pointers you have to write at runtime the better. Writing to local variables is better than writing through a mutable pointer. As much as possible, you should try to constrain mutable writes to the data that you have ownership over.
+
+### Utf-8
+
+- **Rust input is interpreted as a sequence of Unicode code points encoded in UTF-8.**
+
+  - "code points" = the numeric value assigned to a character in the utf-8 mapping.
+
+    - utf-8 has 5 possible ways to interpret values.
+
+      - most significant byte starts with...
+
+      1. '11110' ===> 4 bytes of Utf-8
+
+      - if so, bytes fallowing first byte must start with '10' or else it is an error
+      - 11110000 10011111 10001101 10001110 ....this is a valid utf8 stream of bytes. the actual **'code point'** for this stream of bits is what' left after you strip away the meta-data.
+        0000011111001101001110 which represnets some 'unicode' charater.
+        - U+01F34E ....hex for unicode character it represents. (apple emoji)
+
+      2. '1110' ===> 3 bytes of utf8
+      3. '110' ===> 2 bytes
+      4. '0' ===> 1 byte will match to Ascii
+
+  - Utf-8 is a **mapping** of the binary values to their assiciated characters.
