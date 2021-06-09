@@ -121,3 +121,25 @@ let data = Arc::new(Mutex::new(x));
   - The key challenge is choosing what logic to use...
     - They use a derivative of **'Seperation Logic'. An extension of Hoare logic**..for reasoning about pointer-manipulating programs.
     - It's a perfect fit for Rust becuase it models 'Ownership' nicely.
+
+At the dawn of computer science you had...
+
+1.  Lambda Calculus
+2.  turing machine.
+
+          - If you take Lambda calculus and ADD Logic ===> you get **type theory**.
+          - If you take Turring machines and Add Logic ====> you get....????? Nothing yet.
+
+    Nobody has developed a logic for turring machines yet.
+
+### type theory
+
+- no agreed upon definition of what a 'type' is. Two competing intuitive conceptions....
+
+  1. type Church flavor....objects of a Category. An interface which places restrictions on the way operations compose. Limiting the kind of object you can construct.
+  2. type Curry flavor...work like predicates or observations. filtering out some well behaved subsets of objects. A predicate is a well-formed formula that can be evaluated to true or false in function. It can thus be considered as a Boolean-valued function. A predicate consists of atomic formulas connected with logical connectives.
+
+     In logic and Category theory circiles there is a bias towards the Church flavor. This reminds me of Rust.
+     But in programing languages there is a bias towards the Curry flavor. ??
+
+  Dependent type theory is about unifying these two flavors.

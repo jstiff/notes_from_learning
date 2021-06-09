@@ -5,6 +5,7 @@
   - checking can happen statically (at compile time), dynamically (at run time).
   - The more type restrictions that are imposed by the compiler, the more strongly typed a programming language is
 - The hardware of a general purpose computer is unable to discriminate between for example a memory address and an instruction code, or between a character, an integer, or a floating-point number, because it makes no intrinsic distinction between any of the possible values that a sequence of bits might mean.
+
 - Associating a sequence of bits with a type conveys that meaning to the programmable hardware to form a symbolic system composed of that hardware and some program.
 
 #### Advantages provided by programmer-specified type systems.

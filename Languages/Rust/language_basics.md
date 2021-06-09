@@ -89,7 +89,7 @@
 
       1. '11110' ===> 4 bytes of Utf-8
 
-      - if so, bytes fallowing first byte must start with '10' or else it is an error
+      - if so, bytes following first byte must start with '10' or else it is an error
       - 11110000 10011111 10001101 10001110 ....this is a valid utf8 stream of bytes. the actual **'code point'** for this stream of bits is what' left after you strip away the meta-data.
         0000011111001101001110 which represnets some 'unicode' charater.
         - U+01F34E ....hex for unicode character it represents. (apple emoji)
