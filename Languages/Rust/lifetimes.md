@@ -1,5 +1,7 @@
 ### Lifetime Annotations.
 
+- The first thing one needs to realize about lifetimes is that they are all about references, and nothing else.
+
 - at first glance it seems that lifetimes are ways of telling the compilier that you want to extend a reference to a piece of data that will not live long enough for that particular reference. ??? This might be wrong though. **Lifetime annotations don’t change how long any of the references involved live. In the same way that functions can accept any type when the signature specifies a generic type parameter, functions can accept references with any lifetime when the signature specifies a generic lifetime parameter. What lifetime annotations do is relate the lifetimes of multiple references to each other**.
 
   - By specifying the lifetime parameters for say, a function signature, we are **not changing the lifetimes of any values** passed in or returned, but we are saying that any values that do not adhere to this **contract should be rejected by the borrow checker**.

@@ -20,3 +20,5 @@ let values = vec![1, 2, 3, 4, 5];
     result
 }
 ```
+
+- std iterators return &references to the data it's interating over. NOT the data itself. (read-only)
