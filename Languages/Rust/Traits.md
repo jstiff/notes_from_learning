@@ -55,3 +55,6 @@ println!("We installed the {:?} floor and painted it {:?}", job_done.wood, job_d
 
 - What is the point? I think if we want a particular 'type' to have a restricted  method signatures. A trait is a way to define which types are allowed to interface with the methods. I can have a trait that has methods that only deal with 'String' or 'u8'. By saying `impl exampleTrait for myStruct`... I am telling the compiler that 'myStruct' will adopt the method signatures of 'exampleTrait' so keep track of when my code violates these type restrictions. This all promotes 'soundness' and 'consistency' throughout a program, reducing bugs caused by diff types or misused types. 
 	- When I implement a Trait on a struct, I am saying I want the type constraints applied which will ensure that my code or the types I define will fallow the same logic as the trait. 
+
+### wikipedia
+- The type system supports a mechanism similar to type classes, called "traits", inspired directly by the Haskell language. This is a facility for ad hoc polymorphism, **achieved by adding constraints to type variable declarations**.
