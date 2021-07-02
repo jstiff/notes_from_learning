@@ -58,3 +58,4 @@ println!("We installed the {:?} floor and painted it {:?}", job_done.wood, job_d
 
 ### wikipedia
 - The type system supports a mechanism similar to type classes, called "traits", inspired directly by the Haskell language. This is a facility for ad hoc polymorphism, **achieved by adding constraints to type variable declarations**.
+- The object system within Rust is based around implementations, traits and structured types. Implementations fulfill a role similar to that of classes within other languages and are defined with the keyword impl. Inheritance and polymorphism are provided by traits; they allow methods to be defined and mixed in to implementations. Structured types are used to define fields. Implementations and traits cannot define fields themselves, and only traits can provide inheritance.
